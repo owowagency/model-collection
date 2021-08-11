@@ -5,8 +5,6 @@ This also applies somewhat to Collection
 ```ts
 class Car extends Model {
     brand: string;
-
-    atrributes: {}
 }
 ```
 
