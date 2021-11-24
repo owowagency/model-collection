@@ -1,8 +1,8 @@
-interface Cast {
+interface Cast<T, V = unknown> {
     /**
      * Casts the value.
      */
-    cast(value: any): any;
+    cast(value: V): T;
 }
 
 export default Cast;

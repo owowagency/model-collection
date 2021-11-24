@@ -1,8 +1,8 @@
-import Base from '@//Base';
-import {Options} from '@//providers/Provider';
+import Base from '@/Base';
+import {Options} from '@/providers/Provider';
 import cloneDeep from 'lodash.clonedeep';
 
-type Attributes = Record<string|number|symbol, any>;
+type Attributes = Record<string|number|symbol, unknown>;
 
 export default abstract class Model<A extends Attributes> extends Base<A> {
     /**
@@ -26,7 +26,7 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
     /**
      * @inheritDoc
      */
-    async fetch(options?: Options): Promise<any> {
+    async fetch(options?: Options): Promise<unknown> {
         const result = await super.fetch(options);
 
         this.syncOriginal();
@@ -44,14 +44,14 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
     /**
      * Returns the value of the identifier.
      */
-    getIdentifier(): any {
+    getIdentifier(): unknown {
         return this.attributes[this.primaryKey];
     }
 
     /**
      * @inheritDoc
      */
-    async save(action: 'create' | 'update', options?: Options): Promise<any> {
+    async save(action: 'create' | 'update', options?: Options): Promise<unknown> {
         const result = await super.save(action, options);
 
         this.syncOriginal();

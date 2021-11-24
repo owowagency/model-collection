@@ -1,5 +1,5 @@
-import {Action} from '@//providers/Provider';
-import Errors from '@//Errors';
+import {Action} from '@/providers/Provider';
+import Errors from '@/Errors';
 
 interface HasHttpProvider {
     /**
@@ -20,12 +20,12 @@ interface HasHttpProvider {
     /**
      * Returns the parameters used during the fetch action.
      */
-    getFetchParams: () => Record<string, any>;
+    getFetchParams: () => Record<string, unknown>;
 
     /**
      * Returns the data used during the create and update actions.
      */
-    getSaveData: () => Record<string, any>;
+    getSaveData: () => Record<string, unknown>;
 }
 
 export default HasHttpProvider;

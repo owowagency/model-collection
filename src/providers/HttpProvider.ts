@@ -1,12 +1,12 @@
-import HttpClient, {RequestMethod} from '@//providers/HttpClient';
+import HttpClient, {RequestMethod} from '@/providers/HttpClient';
 import axios, {AxiosResponse} from 'axios';
-import HasHttpProvider from '@//providers/HasHttpProvider';
-import Provider from '@//providers/Provider';
+import HasHttpProvider from '@/providers/HasHttpProvider';
+import Provider from '@/providers/Provider';
 
 export interface RequestConfig {
-    data?: Record<string, any>;
+    data?: Record<string, unknown>;
     method?: RequestMethod;
-    params?: Record<string, any>;
+    params?: Record<string, unknown>;
     url?: string;
 }
 
@@ -14,7 +14,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async create(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
+    async create(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
         return this.makeRequest(
             model,
             'post',
@@ -26,7 +26,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async delete(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
+    async delete(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
         return this.makeRequest(
             model,
             'delete',
@@ -38,7 +38,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async fetch(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
+    async fetch(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
         return this.makeRequest(
             model,
             'get',
@@ -57,7 +57,7 @@ class HttpProvider implements Provider {
     /**
      * Makes an HTTP request.
      */
-    async makeRequest(model: HasHttpProvider, method: RequestMethod, url: string, config: RequestConfig = {}): Promise<any> {
+    async makeRequest(model: HasHttpProvider, method: RequestMethod, url: string, config: RequestConfig = {}): Promise<unknown> {
         let result;
 
         const requestConfig: RequestConfig = {
@@ -82,7 +82,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async update(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
+    async update(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
         return this.makeRequest(
             model,
             'put',

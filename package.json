@@ -11,7 +11,7 @@
     },
     "scripts": {
         "build": "yarn rollup -c rollup.config.js",
-        "lint": "eslint src/**/*.ts",
+        "lint": "eslint src --ext ts",
         "test": "jest"
     },
     "devDependencies": {

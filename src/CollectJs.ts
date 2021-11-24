@@ -28,12 +28,12 @@ interface CollectJs<Item> {
      * keeping only those items that pass a given truth test.
      */
     filter(fn: (item: Item) => boolean): this;
-    filter(fn: (item: Item, key?: any) => boolean): this;
+    filter(fn: (item: Item, key?: string|number) => boolean): this;
 
     /**
      * The first method returns the first element in the collection that passes a given truth test.
      */
-    first<V>(fn?: (item: Item) => boolean, defaultValue?: (...any: any[]) => V | Item): Item;
+    first<V>(fn?: (item: Item) => boolean, defaultValue?: (...any: Item[]) => V | Item): Item;
 
     /**
      * The where method filters the collection by a given key / value pair.
@@ -46,12 +46,12 @@ interface CollectJs<Item> {
      * The callback is free to modify the item and return it, thus forming a new collection of modified items.
      * Then, the array is flattened by a level.
      */
-    flatMap<T>(fn: (item: Item, key: any) => T): this;
+    flatMap<T>(fn: (item: Item, key: string|number) => T): this;
 
      /**
       * The get method returns the item at a given key. If the key does not exist, null is returned.
       */
-    get<K, V>(key: keyof Item | K, defaultValue?: (...any: any[]) => V | Item): Item | null;
+    get<K, V>(key: keyof Item | K, defaultValue?: (...any: Item[]) => V | Item): Item | null;
 
     /**
      * The isEmpty method returns true if the collection is empty; otherwise, false is returned.
@@ -62,7 +62,7 @@ interface CollectJs<Item> {
      * The map method iterates through the collection and passes each value to the given callback.
      * The callback is free to modify the item and return it, thus forming a new collection of modified items.
      */
-    map<T>(fn: (item: Item, index: any) => T): this;
+    map<T>(fn: (item: Item, index: string|number) => T): this;
 
     /**
      * The merge method merges the given object into the original collection.
@@ -80,13 +80,13 @@ interface CollectJs<Item> {
      * The reduce method reduces the collection to a single value,
      * passing the result of each iteration into the subsequent iteration.
      */
-    reduce<T>(fn: (_carry: T, item: Item) => T, carry: T): any;
+    reduce<T>(fn: (_carry: T, item: Item) => T, carry: T): T;
 
     /**
      * The search method searches the collection for the given value and returns its key if found.
      * If the item is not found, false is returned.
      */
-    search(valueOrFunction: Item | ((value: Item, key: number) => boolean), strict?: boolean): any;
+    search(valueOrFunction: Item | ((value: Item, key: number) => boolean), strict?: boolean): Item;
 
     /**
      * The where method filters the collection by a given key / value pair.

@@ -1,6 +1,6 @@
-import Base from '@//Base';
+import Base from '@/Base';
 import {Collection as BaseCollection} from 'collect.js';
-import CollectJs from '@//CollectJs';
+import CollectJs from '@/CollectJs';
 
 abstract class Collection<M, A> extends Base<A> {
     /**
@@ -25,7 +25,7 @@ abstract class Collection<M, A> extends Base<A> {
     /**
      * A class that helps managing collections of models.
      */
-    constructor(items: any[] = [], attributes: Partial<A> = {}) {
+    constructor(items: unknown[] = [], attributes: Partial<A> = {}) {
         super(attributes);
 
         this.items = [];
@@ -43,11 +43,11 @@ abstract class Collection<M, A> extends Base<A> {
     /**
      * Fills the items.
      */
-    fill(items: any[]): void {
+    fill(items: unknown[]): void {
         const ModelClass = this.getModel();
 
         this.items = items
-            .map((item: any) => {
+            .map((item: unknown) => {
                 if (item instanceof ModelClass) {
                     return item;
                 }
@@ -59,12 +59,12 @@ abstract class Collection<M, A> extends Base<A> {
     /**
      * Returns the model this collection holds.
      */
-    abstract getModel(): new (...args: any) => M;
+    abstract getModel(): new (...args: unknown[]) => M;
 }
 
 // Merge collect.js with our collection.
 interface Collection<M, A> extends CollectJs<M>, Base<A> {
-    getDefaults(): any;
+    getDefaults(): unknown;
 }
 
 Object.getOwnPropertyNames(BaseCollection.prototype)

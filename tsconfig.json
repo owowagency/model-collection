@@ -3,8 +3,7 @@
         "baseUrl": "./",
         "esModuleInterop": true,
         "paths": {
-            "@/*": ["./src/*"]
-            "@/tests/*": ["./tests/*"]
+            "@/*": ["./src/*"],
         }
     }
 }

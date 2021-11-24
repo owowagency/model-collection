@@ -34,9 +34,8 @@ export default class Errors {
          */
         // TODO Figure out why this Proxy is not reactive. (PIFRO-193)
         return new Proxy(this, {
-            get(target: Errors, prop: string): any {
+            get(target: Errors, prop: string): string|ErrorBag {
                 const error = prop in target
-                    // @ts-ignore
                     ? target[prop]
                     : target.errors[prop];
 

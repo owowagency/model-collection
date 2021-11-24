@@ -1,6 +1,6 @@
-import Provider, {Action, Options} from '@//providers/Provider';
-import Cast from '@//casts/Cast';
-import Errors from '@//Errors';
+import Provider, {Action, Options} from '@/providers/Provider';
+import Cast from '@/casts/Cast';
+import Errors from '@/Errors';
 
 export default abstract class Base<A> {
     /**
@@ -34,7 +34,7 @@ export default abstract class Base<A> {
     fetching = false;
 
     /**
-     * Indicates any action is in progress.
+     * Indicates unknown action is in progress.
      */
     loading = false;
 
@@ -75,8 +75,10 @@ export default abstract class Base<A> {
     /**
      * Calls the provider with the specified action.
      */
-    async callProvider(action: Action, options?: Options): Promise<any> {
-        if (!this.provider) return undefined;
+    async callProvider(action: Action, options?: Options): Promise<unknown> {
+        if (!this.provider) {
+            return undefined;
+        }
 
         this.loading = true;
         this.error = false;
@@ -102,7 +104,7 @@ export default abstract class Base<A> {
     /**
      * Creates the model.
      */
-    async create(options?: Options): Promise<any> {
+    async create(options?: Options): Promise<unknown> {
         this.creating = true;
 
         let result;
@@ -132,7 +134,7 @@ export default abstract class Base<A> {
     /**
      * Fetches the model.
      */
-    async fetch(options?: Options): Promise<any> {
+    async fetch(options?: Options): Promise<unknown> {
         this.fetching = true;
 
         let result;
@@ -148,7 +150,7 @@ export default abstract class Base<A> {
         return result;
     }
 
-    abstract fill(...filling: any[]): void;
+    abstract fill(...filling: unknown[]): void;
 
     /**
      * Fills the attributes.
@@ -192,7 +194,7 @@ export default abstract class Base<A> {
      * Get the casted value of the given value
      */
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    getCasted<K extends keyof A>(key: K, value: any): A[K] {
+    getCasted<K extends keyof A>(key: K, value: unknown): A[K] {
         let attributeValue = value;
 
         const cast = this.getCast(key);
@@ -215,7 +217,7 @@ export default abstract class Base<A> {
     /**
      * Called when the fetch request finished successfully.
      */
-    onFetchSuccess(result: Record<string, any>): void {
+    onFetchSuccess(result: Record<string, unknown>): void {
         this.fill(result);
     }
 
@@ -238,12 +240,11 @@ export default abstract class Base<A> {
      * value.
      */
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    set<K extends keyof A>(key: K, value: any): void {
+    set<K extends keyof A>(key: K, value: unknown): void {
         if (!(key in this.attributes)) {
             this.registerAttribute(key);
         }
 
-        // @ts-ignore
         this[key] = this.getCasted(key, value);
     }
 
@@ -257,7 +258,7 @@ export default abstract class Base<A> {
     /**
      * Saves the model.
      */
-    async save(action: 'create' | 'update', options?: Options): Promise<any> {
+    async save(action: 'create' | 'update', options?: Options): Promise<unknown> {
         this.saving = true;
 
         let result;
@@ -278,7 +279,7 @@ export default abstract class Base<A> {
     /**
      * Updates the model.
      */
-    async update(options?: Options): Promise<any> {
+    async update(options?: Options): Promise<unknown> {
         this.updating = true;
 
         let result;
