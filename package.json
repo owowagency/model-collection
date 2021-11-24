@@ -4,8 +4,9 @@
     "license": "MIT",
     "main": "dist/model-collection.cjs",
     "module": "dist/model-collection.mjs",
-    "browser": "dist/model-collection.js",
-    "unpkg": "dist/model-collection.js",
+    "files": [
+        "dist"
+    ],
     "publishConfig": {
         "@owowagency:registry": "https://npm.pkg.github.com"
     },

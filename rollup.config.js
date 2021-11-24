@@ -5,6 +5,8 @@ const createEntry = (options) => {
     const config = {
         external: [
             'axios',
+            'collect.js',
+            'lodash.clonedeep',
         ],
         input: 'src/index.ts',
         output: {
@@ -21,7 +23,6 @@ const createEntry = (options) => {
 };
 
 export default [
-    createEntry({format: 'iife', file: pkg.browser}),
     createEntry({format: 'es', file: pkg.module}),
     createEntry({format: 'cjs', file: pkg.main}),
 ];
