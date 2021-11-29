@@ -244,6 +244,7 @@ export default abstract class Base<A> {
             this.registerAttribute(key);
         }
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore Type 'K' cannot be used to index type 'this'.
         this[key] = this.getCasted(key, value);
     }
