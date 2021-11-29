@@ -20,12 +20,12 @@ interface HasHttpProvider {
     /**
      * Returns the parameters used during the fetch action.
      */
-    getFetchParams: () => Record<string, unknown>;
+    getFetchParams: () => Record<string|number, unknown>;
 
     /**
      * Returns the data used during the create and update actions.
      */
-    getSaveData: () => Record<string, unknown>;
+    getSaveData: () => unknown;
 }
 
 export default HasHttpProvider;

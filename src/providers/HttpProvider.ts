@@ -4,9 +4,9 @@ import HasHttpProvider from '@/providers/HasHttpProvider';
 import Provider from '@/providers/Provider';
 
 export interface RequestConfig {
-    data?: Record<string, unknown>;
+    data?: Record<string|number, unknown>;
     method?: RequestMethod;
-    params?: Record<string, unknown>;
+    params?: Record<string|number, unknown>;
     url?: string;
 }
 

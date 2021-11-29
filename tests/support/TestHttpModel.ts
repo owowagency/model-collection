@@ -1,37 +1,14 @@
 import HasHttpProvider from '@/providers/HasHttpProvider';
-import Model from '@/Model';
+import HttpModel from '@/HttpModel';
 import {TestModelData} from './TestModel';
 
 /**
  * A class used to test implementation of the `Model` class with an
  * `HttpProvider`.
  */
-export default class TestHttpModel extends Model<TestModelData> implements HasHttpProvider {
-    id?: number;
-
+export default class TestHttpModel extends HttpModel<TestModelData> implements HasHttpProvider {
     /**
      * @inheritdoc
      */
     endpoint = 'test-models';
-
-    /**
-     * @inheritdoc
-     */
-    getEndpoint(): string {
-        return this.endpoint;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    getFetchParams(): Record<string, any> {
-        return {};
-    }
-
-    /**
-     * @inheritdoc
-     */
-    getSaveData(): Partial<TestModelData> {
-        return {};
-    }
 }

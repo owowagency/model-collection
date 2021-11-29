@@ -2,7 +2,7 @@ import Base from '@/Base';
 import {Options} from '@/providers/Provider';
 import cloneDeep from 'lodash.clonedeep';
 
-type Attributes = Record<string|number|symbol, unknown>;
+export type Attributes = Record<string|number|symbol, unknown>;
 
 export default abstract class Model<A extends Attributes> extends Base<A> {
     /**
@@ -15,6 +15,9 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
      */
     primaryKey: keyof A = 'id';
 
+    /**
+     * A class that contains data of a model.
+     */
     constructor(attributes: Partial<A> = {}) {
         super(attributes);
 
@@ -46,6 +49,13 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
      */
     getIdentifier(): unknown {
         return this.attributes[this.primaryKey];
+    }
+
+    /**
+     * Returns the data used during the create and update actions.
+     */
+    getSaveData(): unknown {
+        return this.attributes;
     }
 
     /**
