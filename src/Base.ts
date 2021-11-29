@@ -75,7 +75,7 @@ export default abstract class Base<A> {
     /**
      * Calls the provider with the specified action.
      */
-    async callProvider(action: Action, options?: Options): Promise<unknown> {
+    async callProvider(action: Action, options?: Options): Promise<any> {
         if (!this.provider) {
             return undefined;
         }
@@ -104,7 +104,7 @@ export default abstract class Base<A> {
     /**
      * Creates the model.
      */
-    async create(options?: Options): Promise<unknown> {
+    async create(options?: Options): Promise<any> {
         this.creating = true;
 
         let result;
@@ -134,7 +134,7 @@ export default abstract class Base<A> {
     /**
      * Fetches the model.
      */
-    async fetch(options?: Options): Promise<unknown> {
+    async fetch(options?: Options): Promise<any> {
         this.fetching = true;
 
         let result;
@@ -150,7 +150,7 @@ export default abstract class Base<A> {
         return result;
     }
 
-    abstract fill(...filling: unknown[]): void;
+    abstract fill(...filling: any[]): void;
 
     /**
      * Fills the attributes.
@@ -194,7 +194,7 @@ export default abstract class Base<A> {
      * Get the casted value of the given value
      */
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    getCasted<K extends keyof A>(key: K, value: unknown): A[K] {
+    getCasted<K extends keyof A>(key: K, value: any): A[K] {
         let attributeValue = value;
 
         const cast = this.getCast(key);
@@ -217,7 +217,7 @@ export default abstract class Base<A> {
     /**
      * Called when the fetch request finished successfully.
      */
-    onFetchSuccess(result: Record<string, unknown>): void {
+    onFetchSuccess(result: Record<string, any>): void {
         this.fill(result);
     }
 
@@ -239,12 +239,13 @@ export default abstract class Base<A> {
      * Sets the value of an attribute while registering it and casting the
      * value.
      */
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    set<K extends keyof A>(key: K, value: unknown): void {
+    set<K extends keyof A>(key: K, value: any): void {
         if (!(key in this.attributes)) {
             this.registerAttribute(key);
         }
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore Type 'K' cannot be used to index type 'this'.
         this[key] = this.getCasted(key, value);
     }
 
@@ -258,7 +259,7 @@ export default abstract class Base<A> {
     /**
      * Saves the model.
      */
-    async save(action: 'create' | 'update', options?: Options): Promise<unknown> {
+    async save(action: 'create' | 'update', options?: Options): Promise<any> {
         this.saving = true;
 
         let result;
@@ -279,7 +280,7 @@ export default abstract class Base<A> {
     /**
      * Updates the model.
      */
-    async update(options?: Options): Promise<unknown> {
+    async update(options?: Options): Promise<any> {
         this.updating = true;
 
         let result;

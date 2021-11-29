@@ -1,23 +1,22 @@
 import Cast from '@/casts/Cast';
 
-export default class ConstructorCast<T, V> implements Cast<T, V> {
+export default class ConstructorCast implements Cast {
     /**
      * The constructor that is used to cast a value to.
      */
-    Constructor: new (args: unknown) => T;
+    Constructor: new (args: unknown) => any;
 
     /**
      * Casts a value to a constructor.
      */
-    constructor(Constructor: new (args: unknown) => T) {
+    constructor(Constructor: new (args: unknown) => any) {
         this.Constructor = Constructor;
     }
 
     /**
      * Casts the value.
      */
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    cast(value: V): T {
+    cast(value: any): any {
         if (value instanceof this.Constructor) {
             return value;
         }
