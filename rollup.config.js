@@ -4,7 +4,7 @@ import pkg from './package.json';
 import typescript from 'rollup-plugin-typescript2';
 
 const createEntry = (options) => ({
-    file: options.file,
+    file: `dist/${options.file}`,
     format: options.format,
     name: 'ModelCollection',
 });
