@@ -239,7 +239,7 @@ export default abstract class Base<A> {
      * Sets the value of an attribute while registering it and casting the
      * value.
      */
-    set<K extends keyof A>(key: K, value: any): void {
+    set<K extends keyof A>(key: K, value: unknown): void {
         if (!(key in this.attributes)) {
             this.registerAttribute(key);
         }
