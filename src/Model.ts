@@ -75,4 +75,11 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
     syncOriginal(): void {
         this.original = cloneDeep(this.attributes);
     }
+
+    /**
+     * Returns the json representation of the model.
+     */
+    toJSON(): unknown {
+        return JSON.parse(JSON.stringify(this.attributes));
+    }
 }
