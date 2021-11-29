@@ -2,11 +2,8 @@
     "name": "@owowagency/model-collection",
     "version": "0.0.1",
     "license": "MIT",
-    "main": "dist/model-collection.cjs",
-    "module": "dist/model-collection.mjs",
-    "files": [
-        "dist"
-    ],
+    "main": "model-collection.cjs",
+    "module": "model-collection.mjs",
     "publishConfig": {
         "@owowagency:registry": "https://npm.pkg.github.com"
     },

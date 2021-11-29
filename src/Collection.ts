@@ -64,7 +64,7 @@ abstract class Collection<M, A> extends Base<A> {
 
 // Merge collect.js with our collection.
 interface Collection<M, A> extends CollectJs<M>, Base<A> {
-    getDefaults(): unknown;
+    getDefaults(): A;
 }
 
 Object.getOwnPropertyNames(BaseCollection.prototype)
