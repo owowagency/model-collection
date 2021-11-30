@@ -6,32 +6,32 @@ interface HttpClient {
     /**
      * Makes a delete request.
      */
-    delete(url: string, config?: Record<string, unknown>): Promise<unknown>;
+    delete(url: string, config?: Record<string, any>): Promise<any>;
 
     /**
      * Makes a get request.
      */
-    get(url: string, config?: Record<string, unknown>): Promise<unknown>;
+    get(url: string, config?: Record<string, any>): Promise<any>;
 
     /**
      * Makes a patch request.
      */
-    patch(url: string, config?: Record<string, unknown>): Promise<unknown>;
+    patch(url: string, config?: Record<string, any>): Promise<any>;
 
     /**
      * Makes a post request.
      */
-    post(url: string, config?: Record<string, unknown>): Promise<unknown>;
+    post(url: string, config?: Record<string, any>): Promise<any>;
 
     /**
      * Makes a put request.
      */
-    put(url: string, config?: Record<string, unknown>): Promise<unknown>;
+    put(url: string, config?: Record<string, any>): Promise<any>;
 
     /**
      * Makes a generic request,
      */
-    request(config: RequestConfig): Promise<unknown>;
+    request(config: RequestConfig): Promise<any>;
 }
 
 export default HttpClient;

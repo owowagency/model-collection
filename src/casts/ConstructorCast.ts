@@ -4,12 +4,12 @@ export default class ConstructorCast implements Cast {
     /**
      * The constructor that is used to cast a value to.
      */
-    Constructor: new (args: unknown) => any;
+    Constructor: new (args: any) => any;
 
     /**
      * Casts a value to a constructor.
      */
-    constructor(Constructor: new (args: unknown) => any) {
+    constructor(Constructor: new (args: any) => any) {
         this.Constructor = Constructor;
     }
 

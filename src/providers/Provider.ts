@@ -1,27 +1,27 @@
 export type Action = 'create' | 'delete' | 'fetch' | 'update';
 
-export type Options = Record<string, unknown>;
+export type Options = Record<string, any>;
 
 interface Provider {
     /**
      * Creates the model.
      */
-    create(model: unknown, options?: Options): Promise<unknown>;
+    create(model: any, options?: Options): Promise<any>;
 
     /**
      * Deletes the model.
      */
-    delete(model: unknown, options?: Options): Promise<unknown>;
+    delete(model: any, options?: Options): Promise<any>;
 
     /**
      * Fetches the model.
      */
-    fetch(model: unknown, options?: Options): Promise<unknown>;
+    fetch(model: any, options?: Options): Promise<any>;
 
     /**
      * Updates the model.
      */
-    update(model: unknown, options?: Options): Promise<unknown>;
+    update(model: any, options?: Options): Promise<any>;
 }
 
 export default Provider;

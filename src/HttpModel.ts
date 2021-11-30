@@ -28,7 +28,7 @@ export default abstract class HttpModel<A extends Attributes> extends Model<A> i
     /**
      * @inheritdoc
      */
-    getFetchParams(): Record<string|number, unknown> {
+    getFetchParams(): Record<string|number, any> {
         return {};
     }
 }

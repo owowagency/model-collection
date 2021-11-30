@@ -25,7 +25,7 @@ abstract class Collection<M, A> extends Base<A> {
     /**
      * A class that helps managing collections of models.
      */
-    constructor(items: unknown[] = [], attributes: Partial<A> = {}) {
+    constructor(items: any[] = [], attributes: Partial<A> = {}) {
         super(attributes);
 
         this.items = [];
@@ -43,11 +43,11 @@ abstract class Collection<M, A> extends Base<A> {
     /**
      * Fills the items.
      */
-    fill(items: unknown[]): void {
+    fill(items: any[]): void {
         const ModelClass = this.getModel();
 
         this.items = items
-            .map((item: unknown) => {
+            .map((item: any) => {
                 if (item instanceof ModelClass) {
                     return item;
                 }
@@ -59,7 +59,7 @@ abstract class Collection<M, A> extends Base<A> {
     /**
      * Returns the model this collection holds.
      */
-    abstract getModel(): new (...args: unknown[]) => M;
+    abstract getModel(): new (...args: any[]) => M;
 }
 
 // Merge collect.js with our collection.
