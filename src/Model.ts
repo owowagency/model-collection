@@ -2,7 +2,7 @@ import Base from '@/Base';
 import {Options} from '@/providers/Provider';
 import cloneDeep from 'lodash.clonedeep';
 
-type Attributes = Record<string|number|symbol, unknown>;
+export type Attributes = Record<string|number|symbol, unknown>;
 
 export default abstract class Model<A extends Attributes> extends Base<A> {
     /**
@@ -15,6 +15,9 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
      */
     primaryKey: keyof A = 'id';
 
+    /**
+     * A class that contains data of a model.
+     */
     constructor(attributes: Partial<A> = {}) {
         super(attributes);
 
@@ -49,6 +52,13 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
     }
 
     /**
+     * Returns the data used during the create and update actions.
+     */
+    getSaveData(): unknown {
+        return this.attributes;
+    }
+
+    /**
      * @inheritDoc
      */
     async save(action: 'create' | 'update', options?: Options): Promise<unknown> {
@@ -64,5 +74,13 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
      */
     syncOriginal(): void {
         this.original = cloneDeep(this.attributes);
+    }
+
+    /**
+     * Returns the json representation of the model.
+     */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    toJSON(): any {
+        return this.attributes;
     }
 }
