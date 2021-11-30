@@ -4,9 +4,9 @@ import HasHttpProvider from '@/providers/HasHttpProvider';
 import Provider from '@/providers/Provider';
 
 export interface RequestConfig {
-    data?: Record<string|number, unknown>;
+    data?: any;
     method?: RequestMethod;
-    params?: Record<string|number, unknown>;
+    params?: any;
     url?: string;
 }
 
@@ -14,7 +14,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async create(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
+    async create(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
         return this.makeRequest(
             model,
             'post',
@@ -26,7 +26,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async delete(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
+    async delete(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
         return this.makeRequest(
             model,
             'delete',
@@ -38,7 +38,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async fetch(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
+    async fetch(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
         return this.makeRequest(
             model,
             'get',
@@ -57,7 +57,7 @@ class HttpProvider implements Provider {
     /**
      * Makes an HTTP request.
      */
-    async makeRequest(model: HasHttpProvider, method: RequestMethod, url: string, config: RequestConfig = {}): Promise<unknown> {
+    async makeRequest(model: HasHttpProvider, method: RequestMethod, url: string, config: RequestConfig = {}): Promise<any> {
         let result;
 
         const requestConfig: RequestConfig = {
@@ -82,7 +82,7 @@ class HttpProvider implements Provider {
     /**
      * @inheritdoc
      */
-    async update(model: HasHttpProvider, config: RequestConfig = {}): Promise<unknown> {
+    async update(model: HasHttpProvider, config: RequestConfig = {}): Promise<any> {
         return this.makeRequest(
             model,
             'put',
