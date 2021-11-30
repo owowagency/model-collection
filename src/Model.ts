@@ -79,8 +79,8 @@ export default abstract class Model<A extends Attributes> extends Base<A> {
     /**
      * Returns the json representation of the model.
      */
-    toJSON(): unknown {
-        // Stringify and parse to trigger nested `toJSON` methods.
-        return JSON.parse(JSON.stringify(this.attributes));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    toJSON(): any {
+        return this.attributes;
     }
 }
