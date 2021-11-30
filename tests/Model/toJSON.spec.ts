@@ -11,5 +11,5 @@ test('returns attributes', () => {
     };
     const result = (new TestModel(attributes)).toJSON();
 
-    expect(result).toEqual({id: 1, object: {id: 2}});
+    expect(JSON.parse(JSON.stringify(result))).toEqual({id: 1, object: {id: 2}});
 });
