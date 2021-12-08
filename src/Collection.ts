@@ -44,16 +44,22 @@ abstract class Collection<M, A> extends Base<A> {
      * Fills the items.
      */
     fill(items: any[]): void {
+        this.items = this.mapItems(items);
+    }
+
+    /**
+     * Maps an array of items to an array of Model instances.
+     */
+    mapItems(items: any[]): M[] {
         const ModelClass = this.getModel();
 
-        this.items = items
-            .map((item: any) => {
-                if (item instanceof ModelClass) {
-                    return item;
-                }
+        return items.map((item: any) => {
+            if (item instanceof ModelClass) {
+                return item;
+            }
 
-                return new ModelClass(item);
-            });
+            return new ModelClass(item);
+        });
     }
 
     /**

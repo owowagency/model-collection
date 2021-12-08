@@ -9,6 +9,7 @@
         "jsx": "preserve",
         "moduleResolution": "node",
         "importHelpers": true,
+        "outDir": "./dist",
         "paths": {
             "@/*": ["./src/*"]
         }
