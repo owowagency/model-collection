@@ -1,6 +1,7 @@
 import copy from 'rollup-plugin-copy';
 import json from '@rollup/plugin-json';
 import pkg from './package.json';
+import ttypescript from 'ttypescript';
 import typescript from 'rollup-plugin-typescript2';
 
 const createEntry = (options) => ({
@@ -22,7 +23,7 @@ export default {
     ],
     plugins: [
         json(),
-        typescript(),
+        typescript({typescript: ttypescript}),
         copy({
             targets: [
                 {src: 'package.json', dest: 'dist'},
