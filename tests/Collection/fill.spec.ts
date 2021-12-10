@@ -1,20 +1,14 @@
 import TestCollection from '@/tests/support/TestCollection';
 import TestModel from '@/tests/support/TestModel';
 
-test('fills', () => {
-    // Prepare
-    const collection = new TestCollection([{id: 1}]);
+test('calls mapItems', () => {
+    const mockedMapItems = jest.fn();
 
-    const spy = jest.spyOn(TestCollection.prototype, 'getModel');
+    TestCollection.prototype.mapItems = mockedMapItems;
 
-    // Execute
-    collection.fill([{id: 2}, new TestModel({id: 3})]);
+    const collection = new TestCollection();
 
-    // Assert
-    expect(collection.items).toStrictEqual([
-        new TestModel({id: 2}),
-        new TestModel({id: 3}),
-    ]);
+    collection.fill([{id: 1}]);
 
-    expect(spy).toBeCalledTimes(1);
+    expect(mockedMapItems).toBeCalledWith([{id: 1}]);
 });
