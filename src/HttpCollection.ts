@@ -1,4 +1,3 @@
-import {Action} from '@/providers/Provider';
 import Collection from '@/Collection';
 import HasHttpProvider from '@/providers/HasHttpProvider';
 import HttpProvider from '@/providers/HttpProvider';
@@ -17,7 +16,7 @@ export default abstract class HttpCollection<M, A> extends Collection<M, A> impl
     /**
      * @inheritdoc
      */
-    getEndpoint(action?: Action): string {
+    getEndpoint(): string {
         return this.endpoint;
     }
 
