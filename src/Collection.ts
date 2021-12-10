@@ -44,7 +44,7 @@ abstract class Collection<M, A> extends Base<A> {
      * Fills the items.
      */
     fill(items: any[]): void {
-        this.mapItems(items);
+        this.items = this.mapItems(items);
     }
 
     /**
