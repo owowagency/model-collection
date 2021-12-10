@@ -1,4 +1,4 @@
-// export {default as HasHttpProvider} from './HasHttpProvider';
+export {default as HasHttpProvider} from './HasHttpProvider';
 export * from './HttpClient';
 // export {default as HttpClient} from './HttpClient';
 export * from './HttpProvider';
