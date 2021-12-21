@@ -102,6 +102,17 @@ export default abstract class Base<A> {
     }
 
     /**
+     * Clears error and success states
+     */
+    clearState(): void {
+        this.error = false;
+
+        this.errors = new Errors();
+
+        this.success = false;
+    }
+
+    /**
      * Creates the model.
      */
     async create(options?: Options): Promise<any> {
